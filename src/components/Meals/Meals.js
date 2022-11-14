@@ -3,7 +3,7 @@ import AvailableMeals from "./AvailableMeals"
 import MealsSummary from "./MealsSummary"
 
 
-const Meals = () => {
+const Meals = (props) => {
 
     return(
         <Fragment>

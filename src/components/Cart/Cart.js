@@ -1,15 +1,19 @@
-import { useContext } from "react";
+import React from "react";
+import { useContext, useState } from "react";
 import CartContext from "../../store/cart-context";
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
+import Checkout from "./Checkout";
 
 const Cart = (props) => {
-  
+  const [isCheckout, setIsCheckout] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [didSubmit, setDidSubmit] = useState(false);
+
   const cartCtx = useContext(CartContext);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
-
   const hasItems = cartCtx.items.length > 0;
 
   const cartItemRemoveHandler = (id) => {
@@ -17,7 +21,36 @@ const Cart = (props) => {
   };
 
   const cartItemAddHandler = (item) => {
-    cartCtx.addItem({...item, amount: 1});
+    cartCtx.addItem(item);
+  };
+
+  const orderHandler = () => {
+    setIsCheckout(true);
+  };
+
+
+
+  const submitOrderHandler = async (userData) => {
+    setIsSubmitting(true);
+
+    // await fetch("http://localhost:8080/api/orders", {
+      await fetch('https://foodserviceapp-bfe35-default-rtdb.europe-west1.firebasedatabase.app/orders.json',{
+      method: "POST",
+      body: JSON.stringify({
+        user: userData,
+        orderedItems: cartCtx.items,
+        total: ("$ ") + cartCtx.totalAmount,
+      }),
+    });
+    // if(!response.ok){
+    //   throw new Error("Something went wrong!");
+    // }
+    // const responseData = await response.json();
+    // console.log(responseData);
+
+    setIsSubmitting(false);
+    setDidSubmit(true);
+    cartCtx.clearCart(); 
   };
 
   const cartItems = (
@@ -37,21 +70,51 @@ const Cart = (props) => {
     </ul>
   );
 
-  return (
-    <Modal onClose={props.onClose}>
+  const modalActions = (
+    <div className={classes.actions}>
+      <button className={classes["button--alt"]} onClick={props.onClose}>
+        Close
+      </button>
+      {hasItems && (
+        <button className={classes.button} onClick={orderHandler}>
+          Order
+        </button>
+      )}
+    </div>
+  );
+
+  const cartModalContent = (
+    <React.Fragment>
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      <div className={classes.actions}>
-        <button className={classes["button--alt"]} onClick={props.onClose}>
-          Close
-        </button>
-        { hasItems && <button className={classes.button}>Order</button>}
-      </div>
-    </Modal>
+      {isCheckout && (
+        <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose} />
+      )}
+      {!isCheckout && modalActions}
+    </React.Fragment>
   );
+
+  const isSubmittingModalContent = <p>Sending order data ...</p>;
+
+  const didSubmitModalContent = (
+    <React.Fragment>
+      <p>Successfully sent the order!</p>
+      <div className={classes.actions}>
+      <button className={classes.button} onClick={props.onClose}>
+        Close
+      </button>
+    </div>
+    </React.Fragment>
+  );
+
+  return <Modal onClose={props.onClose}>
+    {!isSubmitting && !didSubmit && cartModalContent}
+    {isSubmitting && isSubmittingModalContent}
+    {!isSubmitting && didSubmit && didSubmitModalContent}
+  </Modal>;
 };
 
 export default Cart;
