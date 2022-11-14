@@ -35,11 +35,14 @@ const AvailableMeals = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [httpError, setHttpError] = useState();
 
+  
+
   useEffect(() => {
-    // setIsLoading(true);
+    setIsLoading(true);
     const fetchMeals = async () => {
       const response = await fetch(
-       "http://localhost:8080/api/meals"
+         "http://localhost:8080/api/meals"
+      //  "https://foodserviceapp-bfe35-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
       );
 
       if (!response.ok) {
