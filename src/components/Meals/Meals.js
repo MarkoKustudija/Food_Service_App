@@ -3,12 +3,12 @@ import AvailableMeals from "./AvailableMeals"
 import MealsSummary from "./MealsSummary"
 
 
-const Meals = (props) => {
+const Meals = () => {
 
     return(
         <Fragment>
             <MealsSummary/>
-            <AvailableMeals />
+            <AvailableMeals/>
         </Fragment>
     )
 }

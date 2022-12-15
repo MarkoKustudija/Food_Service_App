@@ -5,7 +5,7 @@ import classes from "./AuthForm.module.css";
 
 const AuthForm = (props) => {
 
-  const apiKey = 'AIzaSyBZP0Q3wFSmNCVckawIOWumxkLVDkzuuYM'
+  const apiKey = ''
 
 
   const emailInputRef = useRef();

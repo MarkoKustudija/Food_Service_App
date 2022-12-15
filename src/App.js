@@ -1,51 +1,37 @@
-import { useContext, useState } from "react";
-import Header from "./components/Layout/Header";
-import Meals from "./components/Meals/Meals";
-import Cart from "./components/Cart/Cart";
-import CartProvider from "./store/CartProvider";
+import { useContext } from "react";
+// import Header from "./components/Layout/Header";
+// import Meals from "./components/Meals/Meals";
+// import Cart from "./components/Cart/Cart";
+// import CartProvider from "./store/CartProvider";
 import { Route, Redirect, Switch } from "react-router-dom";
 import AuthPage from "./pages/AuthPage";
 import AuthContext from "./store/auth-context";
-
+import Layout from "./components/layout/Layout";
+// import AllMeals from "./pages/AllMeals";
+import Meals from "./components/Meals/Meals";
 
 function App() {
   const authCtx = useContext(AuthContext);
 
-  const [cartIsShown, setCartIsShown] = useState(false);
-
-  const showCartHandler = () => {
-    setCartIsShown(true);
-  };
-
-  const hideCartHandler = () => {
-    setCartIsShown(false);
-  };
-
   return (
-    <CartProvider>
-      {cartIsShown && <Cart onClose={hideCartHandler} />}
-   
-      <Header onShowCart={showCartHandler} />
+    <Layout>
       <Switch>
-        <main>
-          {!authCtx.isLoggedIn && (
-            <Route path="/auth">
-              <AuthPage />
-            </Route>
-          )}
-
-          <Route path="/" exact>
-            <Redirect to="/meals" />
+        {!authCtx.isLoggedIn && (
+          <Route path="/auth">
+            <AuthPage />
           </Route>
+        )}
 
-          <Route path="/meals" exact>
-            <Meals />
-          </Route>
-        </main>
+        <Route path="/" exact>
+          <Redirect to="/meals" />
+        </Route>
+
+        <Route path="/meals" exact>
+          <Meals />
+        </Route>
+        
       </Switch>
-
-   
-    </CartProvider>
+    </Layout>
   );
 }
 

@@ -18,35 +18,37 @@ const Header = (props) => {
     <Fragment>
       <header className={classes.header}>
         <div className={classes.logo}>
-          <h1>Uber Eats</h1>
+          <h3>Uber Eats</h3>
         </div>
-       
+
         <nav className={classes.nav}>
           <ul>
+            {!isLoggedIn && (
+              <li>
+                <NavLink to="/meals" activeClassName={classes.active}>
+                  Meals
+                </NavLink>
+              </li>
+            )}
 
-          {!isLoggedIn && (
-            <li>
-              <NavLink to = "/meals"> Meals </NavLink>
-            </li>
-          )}
-          
-          {!isLoggedIn && (
-            <li>
-              <NavLink to="/auth">Login</NavLink>
-            </li>
-          )}
+            {!isLoggedIn && (
+              <li>
+                <NavLink to="/auth" activeClassName={classes.active}>
+                  Login
+                </NavLink>
+              </li>
+            )}
 
-          {isLoggedIn && (
-            <li>
-              <button className={classes.button} onClick={logoutHandler}>
-                Logout
-              </button>
-            </li>
-          )}
+            {isLoggedIn && (
+              <li>
+                <button className={classes.button} onClick={logoutHandler}>
+                  Logout
+                </button>
+              </li>
+            )}
           </ul>
         </nav>
-        <HeaderCartButton onClick={props.onShowCart} />
-        
+        {isLoggedIn && <HeaderCartButton onClick={props.onShowCart} />}
       </header>
 
       <div className={classes["main-image"]}>

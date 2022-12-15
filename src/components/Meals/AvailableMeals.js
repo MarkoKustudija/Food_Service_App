@@ -30,8 +30,8 @@ const DUMMY_MEALS = [
   },
 ];
 
-const AvailableMeals = () => {
-  const [meals, setMeals] = useState([]);
+const AvailableMeals = (props) => {
+  const setMeals = useState([DUMMY_MEALS])[1];
   const [isLoading, setIsLoading] = useState(false);
   const [httpError, setHttpError] = useState();
 
@@ -42,7 +42,9 @@ const AvailableMeals = () => {
     const fetchMeals = async () => {
       const response = await fetch(
         //  "http://localhost:8080/api/meals"
-       "https://foodserviceapp-bfe35-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
+      //  "https://foodserviceapp-bfe35-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
+      'https://socialnetwork-f896f-default-rtdb.europe-west1.firebasedatabase.app/meals.json'
+    
       );
 
       if (!response.ok) {
@@ -68,7 +70,7 @@ const AvailableMeals = () => {
       setIsLoading(false);
       setHttpError(error.message);
     });
-  }, []);
+  }, [setMeals]);
 
   if (isLoading) {
     return (
