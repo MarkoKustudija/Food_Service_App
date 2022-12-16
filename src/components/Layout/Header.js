@@ -26,7 +26,7 @@ const Header = (props) => {
             {!isLoggedIn && (
               <li>
                 <NavLink to="/meals" activeClassName={classes.active}>
-                  Meals
+                 <h3>Meals</h3> 
                 </NavLink>
               </li>
             )}
@@ -34,7 +34,7 @@ const Header = (props) => {
             {!isLoggedIn && (
               <li>
                 <NavLink to="/auth" activeClassName={classes.active}>
-                  Login
+                  <h3>Login</h3>
                 </NavLink>
               </li>
             )}
@@ -48,7 +48,8 @@ const Header = (props) => {
             )}
           </ul>
         </nav>
-        {isLoggedIn && <HeaderCartButton onClick={props.onShowCart} />}
+        {/* {isLoggedIn && <HeaderCartButton onClick={props.onShowCart} />} */}
+        <HeaderCartButton onClick={props.onShowCart} />
       </header>
 
       <div className={classes["main-image"]}>
