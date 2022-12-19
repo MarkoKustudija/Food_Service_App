@@ -6,26 +6,26 @@ import classes from "./AvailableMeals.module.css";
 const DUMMY_MEALS = [
   {
     id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
+    name: "Pizza Napolitana",
+    description: "The best pizza from Naples",
     price: 22.99,
   },
   {
     id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
+    name: "Pasta Carbonara",
+    description: "Delicious pasta",
     price: 16.5,
   },
   {
     id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
+    name: "Lazania con carne",
+    description: "The Best of Italy ",
     price: 12.99,
   },
   {
     id: "m4",
-    name: "Green Bowl",
-    description: "Healthy...and green...",
+    name: "Ravioli con ricotta",
+    description: "No words need it...",
     price: 18.99,
   },
 ];

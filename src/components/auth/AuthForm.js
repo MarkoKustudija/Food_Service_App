@@ -5,7 +5,7 @@ import classes from "./AuthForm.module.css";
 
 const AuthForm = (props) => {
 
-  const apiKey = ''
+  const apiKey = '';
 
 
   const emailInputRef = useRef();
@@ -93,9 +93,11 @@ const AuthForm = (props) => {
         </div>
         <div className={classes.actions}>
           {!isLoading && (
-            <button>{isLogin ? "Login" : "Create Account"}</button>
+            <button className={classes["button--alt"]} >{isLogin ? "Login" : "Create Account"}</button>
           )}
-          {isLoading && <p> Sending request ...</p>}
+
+         {isLoading && <p> Sending request ...</p>} 
+          
           <button
             type="button"
             className={classes.toggle}

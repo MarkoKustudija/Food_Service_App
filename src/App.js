@@ -9,6 +9,8 @@ import AuthContext from "./store/auth-context";
 import Layout from "./components/layout/Layout";
 // import AllMeals from "./pages/AllMeals";
 import Meals from "./components/Meals/Meals";
+import Home from "./components/Home/Home";
+import NotFound from './pages/NotFound';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -22,6 +24,14 @@ function App() {
           </Route>
         )}
 
+         {/* <Route path="/" exact>
+          <Redirect to="/home" />
+        </Route> */}
+
+        <Route path="/home" exact>
+          <Home />
+        </Route>
+
         <Route path="/" exact>
           <Redirect to="/meals" />
         </Route>
@@ -29,7 +39,11 @@ function App() {
         <Route path="/meals" exact>
           <Meals />
         </Route>
-        
+
+        <Route path="*">
+          <NotFound />
+        </Route>
+
       </Switch>
     </Layout>
   );
