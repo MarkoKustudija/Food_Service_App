@@ -28,8 +28,8 @@ const MealItem = (props) => {
         <div className={classes.price}>{price}</div>
       </div>
       <div>
-       {/* {isLoggedIn && <MealItemForm id={props.id} onAddToCart={addToCartHandler} />} */}
-        <MealItemForm id={props.id} onAddToCart={addToCartHandler} />
+       {isLoggedIn && <MealItemForm id={props.id} onAddToCart={addToCartHandler} />}
+        {/* <MealItemForm id={props.id} onAddToCart={addToCartHandler} /> */}
       </div>
     </li>
   );

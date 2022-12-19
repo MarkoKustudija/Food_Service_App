@@ -93,8 +93,10 @@ const AuthForm = (props) => {
         </div>
         <div className={classes.actions}>
           {!isLoading && (
-            <button>{isLogin ? "Login" : "Create Account"}</button>
+            <button className={classes["button--alt"]} >{isLogin ? "Login" : "Create Account"}</button>
           )}
+
+         {isLoading && <p> Sending request ...</p>} 
           
           <button
             type="button"
