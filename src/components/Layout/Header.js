@@ -23,10 +23,11 @@ const Header = (props) => {
 
         <nav className={classes.nav}>
           <ul>
+            
             {!isLoggedIn && (
               <li>
                 <NavLink to="/meals" activeClassName={classes.active}>
-                 <h3>Meals</h3> 
+                 <h3> Meals </h3> 
                 </NavLink>
               </li>
             )}
@@ -34,7 +35,7 @@ const Header = (props) => {
             {!isLoggedIn && (
               <li>
                 <NavLink to="/auth" activeClassName={classes.active}>
-                  <h3>Login</h3>
+                  <h3> Login </h3>
                 </NavLink>
               </li>
             )}

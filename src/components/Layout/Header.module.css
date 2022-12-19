@@ -51,6 +51,7 @@
     display: flex;
     margin: 0;
     padding: 0;
+    margin-left: 35rem;
   }
   
   .nav li {
@@ -76,7 +77,8 @@
     color: white;
     font-weight: bold;
     padding: 0.3rem 1rem;
-    border-radius: 3px;
+    /* border-radius: 3px; */
+    border-radius: 20px;
     cursor: pointer;
   }
   
