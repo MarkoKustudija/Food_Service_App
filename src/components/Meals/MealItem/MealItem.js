@@ -1,13 +1,15 @@
 import { useContext } from "react";
-import AuthContext from "../../../store/auth-context";
+// import AuthContext from "../../../store/auth-context";
 import CartContext from "../../../store/cart-context";
 import classes from "./MealItem.module.css";
 import MealItemForm from "./MealItemForm";
 
 const MealItem = (props) => {
+  
   const cartCtx = useContext(CartContext);
-  const authCtx = useContext(AuthContext);
-  const isLoggedIn = authCtx.isLoggedIn;
+
+  // const authCtx = useContext(AuthContext);
+  // const isLoggedIn = authCtx.isLoggedIn;
 
   const price = `$${props.price.toFixed(2)}`;
 
@@ -28,8 +30,8 @@ const MealItem = (props) => {
         <div className={classes.price}>{price}</div>
       </div>
       <div>
-       {isLoggedIn && <MealItemForm id={props.id} onAddToCart={addToCartHandler} />}
-        {/* <MealItemForm id={props.id} onAddToCart={addToCartHandler} /> */}
+       {/* {isLoggedIn && <MealItemForm id={props.id} onAddToCart={addToCartHandler} />} */}
+        <MealItemForm id={props.id} onAddToCart={addToCartHandler} />
       </div>
     </li>
   );

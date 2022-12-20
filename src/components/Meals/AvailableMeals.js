@@ -42,8 +42,7 @@ const AvailableMeals = (props) => {
     const fetchMeals = async () => {
       const response = await fetch(
         //  "http://localhost:8080/api/meals"
-      //  "https://foodserviceapp-bfe35-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
-      'https://socialnetwork-f896f-default-rtdb.europe-west1.firebasedatabase.app/meals.json'
+        'https://lacucinaitaliana-e86ec-default-rtdb.europe-west1.firebasedatabase.app/meals.json'
     
       );
 
@@ -51,7 +50,7 @@ const AvailableMeals = (props) => {
         throw new Error("Something went wrong!");
       }
       const responseData = await response.json();
-      console.log(responseData);
+      // console.log(responseData);
 
       const loadedMeals = [];
 

@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import AuthPage from "./pages/AuthPage";
 import AuthContext from "./store/auth-context";
-import Layout from "./components/layout/Layout";
+import Layout from "./components/Layout/Layout";
 // import AllMeals from "./pages/AllMeals";
 import Meals from "./components/Meals/Meals";
 import Home from "./components/Home/Home";

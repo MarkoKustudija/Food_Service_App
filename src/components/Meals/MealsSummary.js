@@ -1,10 +1,11 @@
-import { useContext } from "react";
-import AuthContext from "../../store/auth-context";
+// import { useContext } from "react";
+// import AuthContext from "../../store/auth-context";
 import classes from "../Meals/MealsSummary.module.css";
 
 const MealsSummary = (props) => {
-  const authCtx = useContext(AuthContext);
-  const isLoggedIn = authCtx.isLoggedIn;
+
+  // const authCtx = useContext(AuthContext);
+  // const isLoggedIn = authCtx.isLoggedIn;
   return (
     <section className={classes.summary}>
       <h2>Delicious Food, Delivered To You</h2>
@@ -18,11 +19,10 @@ const MealsSummary = (props) => {
         of course by experienced chefs!
       </p> */}
 
-      {!isLoggedIn && (
-        <h4>
-          For ordering your food you first need to make account and to Login !!!
-        </h4>
-      )}
+      <h4>
+        To check out our promotions and sign up for our News Letter please make
+        an account !!!
+      </h4>
     </section>
   );
 };

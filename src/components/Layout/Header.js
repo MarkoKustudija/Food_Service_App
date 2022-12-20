@@ -18,7 +18,7 @@ const Header = (props) => {
     <Fragment>
       <header className={classes.header}>
         <div className={classes.logo}>
-          <h3>Italian Cucina</h3>
+          <h3>LaCucina Italiana</h3>
         </div>
 
         <nav className={classes.nav}>
@@ -49,6 +49,14 @@ const Header = (props) => {
 
             {isLoggedIn && (
               <li>
+                <NavLink to="/home" activeClassName={classes.active}>
+                  <h3> Home </h3>
+                </NavLink>
+              </li>
+            )}
+
+            {isLoggedIn && (
+              <li>
                 <NavLink to="/meals" activeClassName={classes.active}>
                   <h3> Menu </h3>
                 </NavLink>
@@ -64,8 +72,8 @@ const Header = (props) => {
             )}
           </ul>
         </nav>
-        {isLoggedIn && <HeaderCartButton onClick={props.onShowCart} />}
-        {/* <HeaderCartButton onClick={props.onShowCart} /> */}
+        {/* {isLoggedIn && <HeaderCartButton onClick={props.onShowCart} />} */}
+        <HeaderCartButton onClick={props.onShowCart} />
       </header>
 
       <div className={classes["main-image"]}>
