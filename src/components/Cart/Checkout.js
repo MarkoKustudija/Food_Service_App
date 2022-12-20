@@ -57,7 +57,7 @@ const Checkout = (props) => {
         city: enteredCity,
         postalCode: enteredPostalCode,
       });
-      console.log("Submited");
+      // console.log("Submited");
   };
 
   // form validity styles 

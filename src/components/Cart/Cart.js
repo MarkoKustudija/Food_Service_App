@@ -34,8 +34,7 @@ const Cart = (props) => {
     setIsSubmitting(true);
 
     // await fetch("http://localhost:8080/api/orders", {
-      // await fetch('https://foodserviceapp-bfe35-default-rtdb.europe-west1.firebasedatabase.app/orders.json',{
-        await fetch ('https://socialnetwork-f896f-default-rtdb.europe-west1.firebasedatabase.app/meals.json',{
+        await fetch('https://lacucinaitaliana-e86ec-default-rtdb.europe-west1.firebasedatabase.app/meals.json', {
       method: "POST",
       body: JSON.stringify({
         user: userData,
